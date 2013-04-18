@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "Test.h"
 
+
 @interface ViewController (){
     MyRateAlertView *rateView;
 }
@@ -32,6 +33,7 @@
     [openRateViewButton addTarget:self action:@selector(openView) forControlEvents:UIControlEventTouchUpInside];
     [openRateViewButton setFrame:CGRectMake((self.view.frame.size.width - openRateViewButton.frame.size.width )/2 - 25, 400, 50, 44)];
     [self.view addSubview:openRateViewButton];
+    
 }
 
 - (void)didReceiveMemoryWarning
