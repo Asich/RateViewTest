@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyRateAlertView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<ButtonProtocolDelegate>{
+    
+}
 
 @end

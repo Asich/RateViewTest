@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B012D32171FAA0600BC575F /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B012D31171FAA0600BC575F /* Test.m */; };
+		7B012D34171FE48C00BC575F /* iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B012D33171FE48C00BC575F /* iPad.xib */; };
 		7B7C98A1171E84FB0006968E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7C98A0171E84FB0006968E /* UIKit.framework */; };
 		7B7C98A3171E84FB0006968E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7C98A2171E84FB0006968E /* Foundation.framework */; };
 		7B7C98A5171E84FB0006968E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7C98A4171E84FB0006968E /* CoreGraphics.framework */; };
@@ -18,9 +20,24 @@
 		7B7C98B7171E84FB0006968E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B7C98B6171E84FB0006968E /* Default-568h@2x.png */; };
 		7B7C98BA171E84FB0006968E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7C98B9171E84FB0006968E /* ViewController.m */; };
 		7B7C98BD171E84FB0006968E /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B7C98BB171E84FB0006968E /* ViewController.xib */; };
+		7B7C98C5171E85850006968E /* MyRateAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7C98C4171E85850006968E /* MyRateAlertView.m */; };
+		7B7C98C7171E8ACB0006968E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7C98C6171E8ACB0006968E /* QuartzCore.framework */; };
+		7B7C98CE171E8C530006968E /* action-black-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B7C98C8171E8C530006968E /* action-black-button.png */; };
+		7B7C98CF171E8C530006968E /* action-black-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B7C98C9171E8C530006968E /* action-black-button@2x.png */; };
+		7B7C98D0171E8C530006968E /* action-gray-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B7C98CA171E8C530006968E /* action-gray-button.png */; };
+		7B7C98D1171E8C530006968E /* action-gray-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B7C98CB171E8C530006968E /* action-gray-button@2x.png */; };
+		7B7C98D2171E8C530006968E /* alert-window.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B7C98CC171E8C530006968E /* alert-window.png */; };
+		7B7C98D3171E8C530006968E /* alert-window@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B7C98CD171E8C530006968E /* alert-window@2x.png */; };
+		7B7C98D6171E8C950006968E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B7C98D4171E8C950006968E /* Icon.png */; };
+		7B7C98D7171E8C950006968E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B7C98D5171E8C950006968E /* Icon@2x.png */; };
+		7B7C98DA171EB8680006968E /* action-red-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B7C98D8171EB8670006968E /* action-red-button.png */; };
+		7B7C98DB171EB8680006968E /* action-red-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B7C98D9171EB8670006968E /* action-red-button@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B012D30171FAA0600BC575F /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
+		7B012D31171FAA0600BC575F /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
+		7B012D33171FE48C00BC575F /* iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPad.xib; sourceTree = "<group>"; };
 		7B7C989D171E84FB0006968E /* RateViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B7C98A0171E84FB0006968E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7B7C98A2171E84FB0006968E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -37,6 +54,19 @@
 		7B7C98B8171E84FB0006968E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		7B7C98B9171E84FB0006968E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		7B7C98BC171E84FB0006968E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		7B7C98C3171E85850006968E /* MyRateAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRateAlertView.h; sourceTree = "<group>"; };
+		7B7C98C4171E85850006968E /* MyRateAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRateAlertView.m; sourceTree = "<group>"; };
+		7B7C98C6171E8ACB0006968E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7B7C98C8171E8C530006968E /* action-black-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-black-button.png"; sourceTree = "<group>"; };
+		7B7C98C9171E8C530006968E /* action-black-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-black-button@2x.png"; sourceTree = "<group>"; };
+		7B7C98CA171E8C530006968E /* action-gray-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-gray-button.png"; sourceTree = "<group>"; };
+		7B7C98CB171E8C530006968E /* action-gray-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-gray-button@2x.png"; sourceTree = "<group>"; };
+		7B7C98CC171E8C530006968E /* alert-window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert-window.png"; sourceTree = "<group>"; };
+		7B7C98CD171E8C530006968E /* alert-window@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert-window@2x.png"; sourceTree = "<group>"; };
+		7B7C98D4171E8C950006968E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		7B7C98D5171E8C950006968E /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		7B7C98D8171EB8670006968E /* action-red-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-red-button.png"; sourceTree = "<group>"; };
+		7B7C98D9171EB8670006968E /* action-red-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-red-button@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B7C98C7171E8ACB0006968E /* QuartzCore.framework in Frameworks */,
 				7B7C98A1171E84FB0006968E /* UIKit.framework in Frameworks */,
 				7B7C98A3171E84FB0006968E /* Foundation.framework in Frameworks */,
 				7B7C98A5171E84FB0006968E /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +104,7 @@
 		7B7C989F171E84FB0006968E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7B7C98C6171E8ACB0006968E /* QuartzCore.framework */,
 				7B7C98A0171E84FB0006968E /* UIKit.framework */,
 				7B7C98A2171E84FB0006968E /* Foundation.framework */,
 				7B7C98A4171E84FB0006968E /* CoreGraphics.framework */,
@@ -87,7 +119,12 @@
 				7B7C98B0171E84FB0006968E /* AppDelegate.m */,
 				7B7C98B8171E84FB0006968E /* ViewController.h */,
 				7B7C98B9171E84FB0006968E /* ViewController.m */,
+				7B7C98C3171E85850006968E /* MyRateAlertView.h */,
+				7B7C98C4171E85850006968E /* MyRateAlertView.m */,
+				7B012D30171FAA0600BC575F /* Test.h */,
+				7B012D31171FAA0600BC575F /* Test.m */,
 				7B7C98BB171E84FB0006968E /* ViewController.xib */,
+				7B012D33171FE48C00BC575F /* iPad.xib */,
 				7B7C98A7171E84FB0006968E /* Supporting Files */,
 			);
 			path = RateViewTest;
@@ -96,6 +133,16 @@
 		7B7C98A7171E84FB0006968E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7B7C98C8171E8C530006968E /* action-black-button.png */,
+				7B7C98C9171E8C530006968E /* action-black-button@2x.png */,
+				7B7C98CA171E8C530006968E /* action-gray-button.png */,
+				7B7C98D4171E8C950006968E /* Icon.png */,
+				7B7C98D5171E8C950006968E /* Icon@2x.png */,
+				7B7C98CB171E8C530006968E /* action-gray-button@2x.png */,
+				7B7C98CC171E8C530006968E /* alert-window.png */,
+				7B7C98CD171E8C530006968E /* alert-window@2x.png */,
+				7B7C98D8171EB8670006968E /* action-red-button.png */,
+				7B7C98D9171EB8670006968E /* action-red-button@2x.png */,
 				7B7C98A8171E84FB0006968E /* RateViewTest-Info.plist */,
 				7B7C98A9171E84FB0006968E /* InfoPlist.strings */,
 				7B7C98AC171E84FB0006968E /* main.m */,
@@ -163,6 +210,17 @@
 				7B7C98B5171E84FB0006968E /* Default@2x.png in Resources */,
 				7B7C98B7171E84FB0006968E /* Default-568h@2x.png in Resources */,
 				7B7C98BD171E84FB0006968E /* ViewController.xib in Resources */,
+				7B7C98CE171E8C530006968E /* action-black-button.png in Resources */,
+				7B7C98CF171E8C530006968E /* action-black-button@2x.png in Resources */,
+				7B7C98D0171E8C530006968E /* action-gray-button.png in Resources */,
+				7B7C98D1171E8C530006968E /* action-gray-button@2x.png in Resources */,
+				7B7C98D2171E8C530006968E /* alert-window.png in Resources */,
+				7B7C98D3171E8C530006968E /* alert-window@2x.png in Resources */,
+				7B7C98D6171E8C950006968E /* Icon.png in Resources */,
+				7B7C98D7171E8C950006968E /* Icon@2x.png in Resources */,
+				7B7C98DA171EB8680006968E /* action-red-button.png in Resources */,
+				7B7C98DB171EB8680006968E /* action-red-button@2x.png in Resources */,
+				7B012D34171FE48C00BC575F /* iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +234,8 @@
 				7B7C98AD171E84FB0006968E /* main.m in Sources */,
 				7B7C98B1171E84FB0006968E /* AppDelegate.m in Sources */,
 				7B7C98BA171E84FB0006968E /* ViewController.m in Sources */,
+				7B7C98C5171E85850006968E /* MyRateAlertView.m in Sources */,
+				7B012D32171FAA0600BC575F /* Test.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +321,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RateViewTest/RateViewTest-Prefix.pch";
 				INFOPLIST_FILE = "RateViewTest/RateViewTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -272,7 +334,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RateViewTest/RateViewTest-Prefix.pch";
 				INFOPLIST_FILE = "RateViewTest/RateViewTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -296,6 +360,7 @@
 				7B7C98C2171E84FB0006968E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
