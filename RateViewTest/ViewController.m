@@ -25,13 +25,10 @@
      rateView = [[MyRateAlertView alloc]initWithMessage:@"Like our App, please rate it on AppStore" delegate:self AppId:@"kAppId" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Rate"]];
     [self.view addSubview:rateView];
     [rateView release];
-    
-//    Test *test = [[Test alloc]initWithFrame:self.view.frame];
-//    [self.view addSubview:test];
-    
+
     UIButton *openRateViewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [openRateViewButton addTarget:self action:@selector(openView) forControlEvents:UIControlEventTouchUpInside];
-    [openRateViewButton setFrame:CGRectMake((self.view.frame.size.width - openRateViewButton.frame.size.width )/2 - 25, 400, 50, 44)];
+    [openRateViewButton setFrame:CGRectMake((self.view.frame.size.width - openRateViewButton.frame.size.width )/2 - 25, 0, 20, 20)];
     [self.view addSubview:openRateViewButton];
     
 }
