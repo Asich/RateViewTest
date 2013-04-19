@@ -135,9 +135,9 @@
 			children = (
 				7B7C98C8171E8C530006968E /* action-black-button.png */,
 				7B7C98C9171E8C530006968E /* action-black-button@2x.png */,
-				7B7C98CA171E8C530006968E /* action-gray-button.png */,
 				7B7C98D4171E8C950006968E /* Icon.png */,
 				7B7C98D5171E8C950006968E /* Icon@2x.png */,
+				7B7C98CA171E8C530006968E /* action-gray-button.png */,
 				7B7C98CB171E8C530006968E /* action-gray-button@2x.png */,
 				7B7C98CC171E8C530006968E /* alert-window.png */,
 				7B7C98CD171E8C530006968E /* alert-window@2x.png */,
