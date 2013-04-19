@@ -12,7 +12,6 @@
 #define kViewWidth 250 // do not change!
 #define kViewHeight 200
 #define kTopIndent 30
-#define kFootIndent 30
 #define kMiddleIndent 5
 
 #define kAlertViewMessageFont           [UIFont systemFontOfSize:18]
@@ -21,19 +20,14 @@
 #define kAlertViewMessageShadowOffset   CGSizeMake(0, -1)
 
 #define NeedsLandscapePhoneTweaks (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) && UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad)
-
-#define kAlertViewBorder         
-#define kAlertViewImageBorder    (NeedsLandscapePhoneTweaks ? 5 : 68)
-#define kAlertButtonHeight       (NeedsLandscapePhoneTweaks ? 35 : 44)
 #define kViewLeftBorder ([UIScreen mainScreen].bounds.size.width - kViewWidth)/2
-
-#define kTransitionDuration 2
 
 #pragma mark -
 #pragma mark -
 
 @interface MyRateAlertView(){
     BOOL isViewClosed;
+    BOOL _landscape;
 }
 
 @property (nonatomic, copy) NSString* cancelButtonTitle;
@@ -65,15 +59,28 @@
                                                     kViewWidth, kViewHeight)];
         isViewClosed = YES;
         [self addSubview:_viewBackgroundImage];
+        
+        _landscape = NO;
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(orientationChanged:)
+                                                     name:UIDeviceOrientationDidChangeNotification
+                                                   object:nil];
     }
     return self;
 }
 
 - (void)drawRect:(CGRect)rect
 {
+    NSLog(@"drawRect rect x: %f", rect.origin.x);
+    NSLog(@"drawRect rect y: %f", rect.origin.y);
+    NSLog(@"drawRect rect width: %f", rect.size.width);
+    NSLog(@"drawRect rect height: %f", rect.size.height);
+
     [self addComponents];
     [self openAnimationInView:self];
 }
+
+#pragma mark -
 
 - (void)addComponents {
     //Add iconImage
@@ -135,6 +142,8 @@
         }
         [self addSubview:cancelButton];
     }
+    UIImage *grayBtnBackImageStateNormal = [[UIImage imageNamed:@"action-gray-button.png"]
+                                            resizableImageWithCapInsets:UIEdgeInsetsMake(37, 22, 10, 22)];
     
     NSLog(@"button number: %lu", (unsigned long)[_buttonTitles count]);
     
@@ -143,7 +152,7 @@
         [aditionalButton addTarget:self action:@selector(passButtonTitle:) forControlEvents:UIControlEventTouchUpInside];
         [aditionalButton setTitle:[_buttonTitles objectAtIndex:i] forState:UIControlStateNormal];
         [aditionalButton setTitleColor:kAlertViewMessageTextColor forState:UIControlStateNormal];
-        [aditionalButton setBackgroundImage:blackBtnBackImageStateNormal forState:UIControlStateNormal];
+        [aditionalButton setBackgroundImage:grayBtnBackImageStateNormal forState:UIControlStateNormal];
         
         if ([_buttonTitles count] < 2){
             aditionalButton.frame = CGRectMake(5 + 120 + 2.6, _mainHeight, 220/2, 44.0);
@@ -159,16 +168,20 @@
     _mainHeight += kMiddleIndent;
     [self setFrame:CGRectMake(kViewLeftBorder, -300, kViewWidth, _mainHeight)];
     UIImage *backgroundImage = [UIImage imageNamed:@"alert-window.png"];
-    [_viewBackgroundImage setImage:[backgroundImage resizableImageWithCapInsets:UIEdgeInsetsMake(40, 140, 10, 140)]];
+    [_viewBackgroundImage setImage:[backgroundImage resizableImageWithCapInsets:
+                                    UIEdgeInsetsMake(40, 140, 10, 140)]];
     CGRect gameArea = CGRectMake(0, 0, kViewWidth, _mainHeight);
     [_viewBackgroundImage setFrame:gameArea];
+    
     [self addSubview:_iconView];
     [self addSubview:labelView];
     
+    [_iconView release];
     [labelView release];
 }
 
 #pragma mark - button actions
+
 - (void)passButtonTitle:(id)sender
 {
     UIButton *clicked = (UIButton *) sender;
@@ -179,19 +192,15 @@
 	[_delegate closeButtonAciton];
 }
 
-- (void)dealloc{
-    [_viewBackgroundImage release];
-    [super dealloc];
-}
-
 #pragma mark - view open/close animation
 
 - (void)closeAnimationInView:(UIView*)view{
     if(isViewClosed == NO){
-        CGPoint centerPoint = CGPointMake(kViewLeftBorder + view.frame.size.width / 2, -300 + view.frame.size.height / 2);
+        CGPoint centerPoint = CGPointMake(kViewLeftBorder + view.frame.size.width / 2,
+                                          -300 + view.frame.size.height / 2);
         CGFloat alpha = 0;
         view.alpha = 1;
-        [UIView animateWithDuration:.4
+        [UIView animateWithDuration:.2
                               delay:0
                             options: UIViewAnimationOptionTransitionFlipFromBottom
                          animations:^{
@@ -210,7 +219,16 @@
 - (void)openAnimationInView:(UIView*)view{
     if(isViewClosed == YES){
         CGFloat startyPosition = view.frame.origin.y + view.frame.size.height;
-        CGFloat endyPosition = 100 + view.frame.origin.y + view.frame.size.height;
+        CGFloat endyPosition;
+        if(_landscape == YES){
+            NSLog(@"landscape yes");
+            // !!!Change / set to center on any orientation
+            endyPosition = ([UIScreen mainScreen].bounds.size.width - self.frame.size.height)/2; 
+        }else{
+            // !!!Change / set to center on any orientation
+            endyPosition = ([UIScreen mainScreen].bounds.size.height - self.frame.size.height)/2;
+        }
+        
         CGFloat offset = .2*(endyPosition - startyPosition);
         CGFloat alpha = 1;
         view.alpha = 0;
@@ -231,4 +249,45 @@
         return;
     }
 }
+
+#pragma mark - orientation did changed
+
+- (void)orientationChanged:(NSNotification *)notification {
+	[self performSelector:@selector(goLandscape) withObject:nil afterDelay:0.1];
+}
+
+- (void)goLandscape {
+	UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+	
+	if((orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) && !_landscape) {
+        _landscape = YES;
+        NSLog(@"Landscape, window width %f", [UIScreen mainScreen].bounds.size.width);
+
+        CGFloat x = ([UIScreen mainScreen].bounds.size.height - self.bounds.size.width)/2;
+        CGFloat y = ([UIScreen mainScreen].bounds.size.width - self.bounds.size.height)/2;
+        CGFloat width = self.frame.size.width;
+        CGFloat height = self.frame.size.height;
+        
+        [self setFrame:CGRectMake(x, y, width, height)];
+        
+	} else if ((orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) && _landscape) {
+        _landscape = NO;
+        NSLog(@"Portrait, window width %f", [UIScreen mainScreen].bounds.size.width);
+        CGFloat x = ([UIScreen mainScreen].bounds.size.width - self.bounds.size.width)/2;
+        CGFloat y = ([UIScreen mainScreen].bounds.size.height - self.bounds.size.height)/2;
+        CGFloat width = self.frame.size.width;
+        CGFloat height = self.frame.size.height;
+        
+        [self setFrame:CGRectMake(x, y, width, height)];
+	}
+}
+
+#pragma mark -
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [_viewBackgroundImage release];
+    [super dealloc];
+}
+
 @end
