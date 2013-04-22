@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @class ViewController;
+@class AppDevViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) ViewController *viewController;
+@property (strong, nonatomic) AppDevViewController *appDevViewController;
 
 @end

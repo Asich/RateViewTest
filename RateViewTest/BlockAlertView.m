@@ -39,23 +39,15 @@ static UIFont *buttonFont = nil;
     }
 }
 
-+ (BlockAlertView *)alertWithTitle:(NSString *)title message:(NSString *)message
++ (BlockAlertView *)alertWithMessage:(NSString *)message
 {
-    return [[[BlockAlertView alloc] initWithTitle:title message:message] autorelease];
+    return [[[BlockAlertView alloc] initWithMessage:message] autorelease];
 }
 
-+ (void)showInfoAlertWithTitle:(NSString *)title message:(NSString *)message
++ (void)showInfoAlertWithMessage:(NSString *)message
 {
-    BlockAlertView *alert = [[BlockAlertView alloc] initWithTitle:title message:message];
+    BlockAlertView *alert = [[BlockAlertView alloc] initWithMessage:message];
     [alert setCancelButtonWithTitle:NSLocalizedString(@"Dismiss", nil) block:nil];
-    [alert show];
-    [alert release];
-}
-
-+ (void)showErrorAlert:(NSError *)error
-{
-    BlockAlertView *alert = [[BlockAlertView alloc] initWithTitle:NSLocalizedString(@"Operation Failed", nil) message:[NSString stringWithFormat:NSLocalizedString(@"The operation did not complete successfully: %@", nil), error]];
-    [alert setCancelButtonWithTitle:@"Dismiss" block:nil];
     [alert show];
     [alert release];
 }
@@ -64,8 +56,6 @@ static UIFont *buttonFont = nil;
 #pragma mark - NSObject
 
 - (void)addComponents:(CGRect)frame {
-    if (_title)
-    {
         
         UIImage *appIconImage = [UIImage imageNamed:@"Icon@2x.png"];
         UIImageView *iconView = [[UIImageView alloc]initWithFrame:CGRectMake
@@ -82,9 +72,8 @@ static UIFont *buttonFont = nil;
         
         [_view addSubview:iconView];
         [iconView release];
-        
+    
         _height += appIconImage.size.height + kAlertViewBorder;
-    }
     
     if (_message)
     {
@@ -140,13 +129,12 @@ static UIFont *buttonFont = nil;
         [self show];
 }
 
-- (id)initWithTitle:(NSString *)title message:(NSString *)message 
+- (id)initWithMessage:(NSString *)message
 {
     self = [super init];
     
     if (self)
     {
-        _title = [title copy];
         _message = [message copy];
         
         _view = [[UIView alloc] init];
@@ -171,7 +159,6 @@ static UIFont *buttonFont = nil;
 
 - (void)dealloc 
 {
-    [_title release];
     [_message release];
     [_backgroundImage release];
     [_view release];

@@ -50,11 +50,10 @@
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
         
         _appId = appId;
-        _textColor = kAlertViewMessageTextColor;
         _textMessage = message;
         _cancelButtonTitle = cancelbuttonTitle;
         _delegate = delegate;
-        _buttonTitles = buttonTitles;
+        //_buttonTitles = buttonTitles;
         _viewBackgroundImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0,
                                                     kViewWidth, kViewHeight)];
         isViewClosed = YES;
@@ -66,6 +65,7 @@
                                                      name:UIDeviceOrientationDidChangeNotification
                                                    object:nil];
     }
+    NSLog(@"buttonnTitles retain count: %lu", (unsigned long)[_buttonTitles retainCount]);
     return self;
 }
 
@@ -76,13 +76,14 @@
     NSLog(@"drawRect rect width: %f", rect.size.width);
     NSLog(@"drawRect rect height: %f", rect.size.height);
 
-    [self addComponents];
+    [self addComponents];//leak
     [self openAnimationInView:self];
 }
 
 #pragma mark -
 
 - (void)addComponents {
+    
     //Add iconImage
     UIImage *appIconImage = [UIImage imageNamed:@"Icon@2x.png"];
     _iconView = [[UIImageView alloc]initWithFrame:CGRectMake
@@ -90,7 +91,8 @@
                                                                  kTopIndent,
                                                                  114.0, 114.0)];
     _iconView.image = appIconImage;
-    //rounded corners using QuartzCore frameword
+    
+    //rounded corners using QuartzCore framework
     CALayer * caLayer = [_iconView layer];
     [caLayer setMasksToBounds:YES];
     [caLayer setCornerRadius:10.0];
@@ -111,7 +113,7 @@
     labelView.font = _messageFont;
     labelView.numberOfLines = 0;
     labelView.lineBreakMode = NSLineBreakByWordWrapping;
-    labelView.textColor = _textColor;
+    labelView.textColor = kAlertViewMessageTextColor;
     labelView.backgroundColor = [UIColor clearColor];
     labelView.textAlignment = NSTextAlignmentCenter;
     labelView.shadowColor = kAlertViewMessageShadowColor;
@@ -134,7 +136,11 @@
         [cancelButton setTitleColor:kAlertViewMessageTextColor forState:UIControlStateNormal];
         [cancelButton setBackgroundImage:blackBtnBackImageStateNormal forState:UIControlStateNormal];
         
-        if([self.buttonTitles count] == 1){
+        NSLog(@"button number: %lu", (unsigned long)[_buttonTitles count]);
+        NSLog(@"buttonnTitles retain count: %lu", (unsigned long)[_buttonTitles retainCount]);
+        NSLog(@"button titles:%@", _buttonTitles);
+        
+        if([_buttonTitles count] == 1){
             cancelButton.frame = CGRectMake(10, _mainHeight, 220/2, 44.0);
         }else{
             cancelButton.frame = CGRectMake(10, _mainHeight, 230, 44.0);
@@ -153,7 +159,7 @@
         [aditionalButton setTitle:[_buttonTitles objectAtIndex:i] forState:UIControlStateNormal];
         [aditionalButton setTitleColor:kAlertViewMessageTextColor forState:UIControlStateNormal];
         [aditionalButton setBackgroundImage:grayBtnBackImageStateNormal forState:UIControlStateNormal];
-        
+        NSLog(@"buttonnTitles retain count2: %lu", (unsigned long)[_buttonTitles retainCount]);
         if ([_buttonTitles count] < 2){
             aditionalButton.frame = CGRectMake(5 + 120 + 2.6, _mainHeight, 220/2, 44.0);
             _mainHeight += aditionalButton.frame.size.height + kMiddleIndent;
@@ -164,6 +170,8 @@
         }
         [self addSubview:aditionalButton];
     }
+    
+    NSLog(@"buttonnTitles retain count3: %lu", (unsigned long)[_buttonTitles retainCount]);
     
     _mainHeight += kMiddleIndent;
     [self setFrame:CGRectMake(kViewLeftBorder, -300, kViewWidth, _mainHeight)];
@@ -179,8 +187,8 @@
     [_iconView release];
     [labelView release];
 }
-
-#pragma mark - button actions
+///////////////////////////////////////////////////////////////////////////////
+#pragma mark - delegate
 
 - (void)passButtonTitle:(id)sender
 {
@@ -285,6 +293,8 @@
 #pragma mark -
 
 - (void)dealloc{
+    NSLog(@"buttonnTitles retain count: %lu", (unsigned long)[_buttonTitles retainCount]);
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_viewBackgroundImage release];
     [super dealloc];

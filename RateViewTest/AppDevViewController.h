@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDevViewController : UIViewController<UIScrollViewDelegate>{
+@interface AppDevViewController : UIViewController<UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDelegate>{
     
 }
+
+@end
+
+@interface TableViewCell : UITableViewCell
+
+@property (nonatomic, retain) UIImageView *cellImageView;
+@property (nonatomic, assign) UILabel *cellLabel;
 
 @end

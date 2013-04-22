@@ -16,12 +16,11 @@
     BOOL _cancelBounce;
 }
 
-+ (BlockAlertView *)alertWithTitle:(NSString *)title message:(NSString *)message;
++ (BlockAlertView *)alertWithMessage:(NSString *)message;
 
-+ (void)showInfoAlertWithTitle:(NSString *)title message:(NSString *)message;
-+ (void)showErrorAlert:(NSError *)error;
++ (void)showInfoAlertWithMessage:(NSString *)message;
 
-- (id)initWithTitle:(NSString *)title message:(NSString *)message;
+//- (id)initWithMessage:(NSString *)message;
 
 - (void)setDestructiveButtonWithTitle:(NSString *)title block:(void (^)())block;
 - (void)setCancelButtonWithTitle:(NSString *)title block:(void (^)())block;

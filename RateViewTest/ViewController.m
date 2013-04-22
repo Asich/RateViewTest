@@ -7,25 +7,47 @@
 //
 
 #import "ViewController.h"
-#import "Test.h"
+#import "AppDevViewController.h"
+#import "BlockAlertView.h"
 
 
-@interface ViewController (){
-    MyRateAlertView *rateView;
-}
+@interface ViewController ()
+
 @end
 
 @implementation ViewController
+
+-(id)init{
+    self = [super init];
+    if(self){
+        
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-     rateView = [[MyRateAlertView alloc]initWithMessage:@"Like our App, please rate it on AppStore" delegate:self AppId:@"kAppId" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Rate"]];
-    [self.view addSubview:rateView];
-    [rateView release];
+}
 
+- (void)viewDidAppear:(BOOL)animated{
+    
+    [self.navigationItem setTitle:@"Alert View"];
+    UIBarButtonItem *goToTable = [[UIBarButtonItem alloc]initWithTitle:@"Go to table" style:UIBarButtonItemStylePlain target:self action:@selector(goToTableAction)];
+    self.navigationItem.rightBarButtonItem = goToTable;
+    [goToTable release];
+    
+    
+    BlockAlertView *alert = [BlockAlertView alertWithMessage:@"Like our app? Please, rate it on App Store!"];
+    [alert setCancelButtonWithTitle:@"Cancel" block:nil];
+    [alert addButtonWithTitle:@"Rate" block:^{
+        [self showActionSheet:nil];
+    }];
+    [alert show];
+    
+
+    
     UIButton *openRateViewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [openRateViewButton addTarget:self action:@selector(openView) forControlEvents:UIControlEventTouchUpInside];
     [openRateViewButton setFrame:CGRectMake((self.view.frame.size.width - openRateViewButton.frame.size.width )/2 - 25, 0, 20, 20)];
@@ -39,28 +61,40 @@
     // Dispose of any resources that can be recreated.
     NSLog(@"memory warning");
 }
-
+////////////////////////////////////////////////////////////////////////////////
 #pragma mark - MyRateAlertViewDelegate
 
--(void)aditionalButtonWith:(NSString *)title{
-    NSLog(@"Button title: %@", title);
-    
-    if ([title isEqualToString:@"Rate"]){
+//
+
+- (void)showActionSheet:(id)sender{
+
         NSString *theUrl = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=409954448&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software";
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:theUrl]];
-    }
 }
 
--(void)closeButtonAciton{
-    NSLog(@"Close button");
-    [rateView closeAnimationInView:rateView];
+
+////////////////////////////////////////////////////////////////////////////////
+- (void)openView{
+    BlockAlertView *alert = [BlockAlertView alertWithMessage:@"asdfadsfasdf"];
+    [alert setCancelButtonWithTitle:@"Cancel" block:nil];
+    [alert addButtonWithTitle:@"Rate" block:^{
+        [self showActionSheet:nil];
+    }];
+    [alert show];
 }
 
--(void)openView{
-    [rateView openAnimationInView:rateView];
+- (void)goToTableAction{
+    AppDevViewController *appDevViewController = [[[AppDevViewController alloc] init]autorelease];
+    [self.navigationController pushViewController:appDevViewController animated:YES];
+    //[appDevViewController release];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
 }
 
 - (void)dealloc {
+    //[_rateView release];
     [super dealloc];
 }
 
